@@ -1,6 +1,63 @@
 
 (function(){
   var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var themeRoot=document.documentElement;
+  var themeMode=themeRoot.dataset.themeMode||'system';
+  var themeQuery=matchMedia('(prefers-color-scheme: dark)');
+  var themeButtons=[];
+  function updateTheme(mode,save){
+    themeMode=mode;
+    var dark=mode==='dark'||(mode==='system'&&themeQuery.matches);
+    themeRoot.dataset.themeMode=mode;
+    themeRoot.dataset.theme=dark?'dark':'light';
+    themeButtons.forEach(function(button){
+      var label=mode==='system'?'SYSTEM':mode.toUpperCase();
+      var shortLabel=mode==='system'?'SYS':mode==='light'?'LGT':'DRK';
+      button.dataset.themeMode=mode;
+      button.setAttribute('aria-label','Theme: '+(mode==='system'?'System default':label.charAt(0)+label.slice(1).toLowerCase()));
+      button.title=button.getAttribute('aria-label');
+      button.querySelector('.label .d').textContent=label;
+      button.querySelector('.label .m').textContent=shortLabel;
+    });
+    if(save){try{localStorage.setItem('portfolio-theme',mode);}catch(error){}}
+  }
+  function setupTheme(){
+    themeButtons=[].slice.call(document.querySelectorAll('.theme-toggle'));
+    updateTheme(themeMode,false);
+    document.addEventListener('click',function(e){
+      var button=e.target.closest && e.target.closest('.theme-toggle');
+      if(!button) return;
+      var modes=['system','light','dark'];
+      updateTheme(modes[(modes.indexOf(themeMode)+1)%modes.length],true);
+    });
+    if(themeQuery.addEventListener) themeQuery.addEventListener('change',function(){if(themeMode==='system') updateTheme('system',false);});
+    else if(themeQuery.addListener) themeQuery.addListener(function(){if(themeMode==='system') updateTheme('system',false);});
+  }
+
+  if(!document.getElementById('view-home')){
+    setupTheme();
+    var standaloneMenu=document.getElementById('menu'), standaloneBurger=document.querySelector('.burger');
+    function closeStandaloneMenu(){standaloneMenu.classList.remove('open');standaloneMenu.setAttribute('aria-hidden','true');standaloneBurger.setAttribute('aria-expanded','false');document.body.classList.remove('menu-open');}
+    document.addEventListener('click',function(e){
+      if(e.target.closest && e.target.closest('.burger')){
+        standaloneMenu.classList.add('open');standaloneMenu.setAttribute('aria-hidden','false');standaloneBurger.setAttribute('aria-expanded','true');document.body.classList.add('menu-open');
+      }else if(e.target.closest && e.target.closest('.ml')) closeStandaloneMenu();
+    });
+    standaloneMenu.querySelector('.close').addEventListener('click',closeStandaloneMenu);
+    addEventListener('keydown',function(e){if(e.key==='Escape') closeStandaloneMenu();});
+    addEventListener('resize',function(){if(innerWidth>900) closeStandaloneMenu();});
+    var standaloneObserver=new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(!entry.isIntersecting) return;
+        entry.target.classList.add('in');
+        entry.target.querySelectorAll('.hl,.w').forEach(function(highlight){highlight.classList.add('in');});
+        standaloneObserver.unobserve(entry.target);
+      });
+    },{threshold:.2,rootMargin:'0px 0px -6% 0px'});
+    document.querySelectorAll('.rv,.div').forEach(function(element){standaloneObserver.observe(element);});
+    addEventListener('load',function(){requestAnimationFrame(function(){document.body.classList.add('loaded');});});
+    return;
+  }
 
   /* Mobile menu */
   var menu=document.getElementById('menu'), burger=document.querySelector('.burger');
@@ -10,6 +67,7 @@
   var caseNav=document.getElementById('nav-case');
   caseNav.innerHTML=document.querySelector('#view-home .nav').innerHTML;
   caseNav.querySelector('.links a').classList.add('cur');
+  setupTheme();
   menu.querySelector('.close').addEventListener('click',closeMenu);
   addEventListener('keydown',function(e){ if(e.key==='Escape') closeMenu(); });
   addEventListener('resize',function(){ if(innerWidth>900) closeMenu(); });
@@ -41,7 +99,7 @@
 
   /* Active nav link */
   var navLinks=[].slice.call(document.querySelectorAll('.links a'));
-  var secs=['work','about','experience','contact'].map(function(id){return document.getElementById(id)});
+  var secs=['work','about','experience','interests','contact'].map(function(id){return document.getElementById(id)});
   function setActive(){
     if(document.body.dataset.view==='case') return;
     var y=scrollY+innerHeight*.35, cur=null;
@@ -100,16 +158,22 @@
 
   /* Views: home <-> case study (hash router) */
   var homeV=document.getElementById('view-home'), caseV=document.getElementById('view-case');
-  var pending=null, lastView=null;
+  var solaraCase=document.querySelector('.solara-case');
+  var homeTitle=document.title, pending=null, lastView=null;
   function route(){
-    var view=/^#\/case\//.test(location.hash)?'case':'home';
+    var caseRoute=location.hash.match(/^#\/case\/([^/]+)/);
+    if(caseRoute&&caseRoute[1]==='jerp'){location.replace('jerp.html');return;}
+    var view=caseRoute&&caseRoute[1]==='solara'?'case':'home';
+    var routeId=view==='case'?'case:solara':'home';
     homeV.hidden=view==='case'; caseV.hidden=view!=='case';
+    solaraCase.hidden=view!=='case';
+    document.title=view==='case'?'Solara: Natural Living — Case Study':homeTitle;
     document.body.dataset.view=view;
-    if(lastView!==null && lastView!==view){
+    if(lastView!==null && lastView!==routeId){
       if(raf){ cancelAnimationFrame(raf); raf=null; }
       scrollTo(0,0); cur=target=0;
     }
-    lastView=view;
+    lastView=routeId;
     if(view==='home' && pending){ var id=pending; pending=null; requestAnimationFrame(function(){ scrollToId(id); }); }
     if(!reduce) parallax(); updateHeroZoom(); setActive();
   }

@@ -4,6 +4,16 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Ariful Islam — Portfolio</title>
+        <script>
+            (function(){
+                var mode='system';
+                try{mode=localStorage.getItem('portfolio-theme')||mode;}catch(error){}
+                if(['system','light','dark'].indexOf(mode)===-1) mode='system';
+                var dark=mode==='dark'||(mode==='system'&&matchMedia('(prefers-color-scheme: dark)').matches);
+                document.documentElement.dataset.themeMode=mode;
+                document.documentElement.dataset.theme=dark?'dark':'light';
+            })();
+        </script>
         <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
@@ -17,12 +27,20 @@
                     <a class="label" href="#work">Works</a>
                     <a class="label" href="#about">About</a>
                     <a class="label" href="#experience">Experience</a>
+                    <a class="label" href="#interests">Interests</a>
                     <a class="label" href="#about">Credentials</a>
                     <a class="label" href="#contact">Contact</a>
                 </nav>
                 <div class="tools">
                     <div class="btn cv"><span class="ic"><picture><source media="(max-width:900px)" srcset="images/figma/2354f9d8-5278-4d03-8364-8a2ddc9ea9be.svg"><img alt="" src="images/figma/2106d6c3-8b2b-41fc-a728-a4de58cad21e.svg"></picture></span><span class="label"><span class="d">Get CV</span><span class="m">CV</span></span></div>
-                    <div class="btn"><span class="ic"><picture><source media="(max-width:900px)" srcset="images/figma/cd52fccd-ccfd-405d-afbe-0e8ba00acb49.svg"><img alt="" src="images/figma/7889d7a6-94c7-4904-b326-6eb950b1f991.svg"></picture></span><span class="label"><span class="d">SYSTEM</span><span class="m">SYS</span></span></div>
+                    <button class="btn theme-toggle" type="button" data-theme-mode="system" aria-label="Theme: System default" title="Theme: System default">
+                        <span class="ic" aria-hidden="true">
+                            <svg class="theme-icon icon-system" viewBox="0 0 16 16" fill="none"><rect x="2" y="2.5" width="12" height="8.5" rx="1" stroke="currentColor" stroke-width="1.4"/><path d="M6 14h4M8 11v3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+                            <svg class="theme-icon icon-light" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="3" stroke="currentColor" stroke-width="1.4"/><path d="M8 1.5v1.3m0 10.4v1.3m6.5-6.5h-1.3M2.8 8H1.5m11.1-4.6-.9.9m-7.4 7.4-.9.9m9.2 0-.9-.9M4.3 4.3l-.9-.9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+                            <svg class="theme-icon icon-dark" viewBox="0 0 16 16" fill="none"><path d="M13.3 10.2A6 6 0 0 1 5.8 2.7 6 6 0 1 0 13.3 10.2Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+                        </span>
+                        <span class="label"><span class="d">SYSTEM</span><span class="m">SYS</span></span>
+                    </button>
                 </div>
             </header>
 
@@ -51,7 +69,7 @@
                 <div class="wh rv">
                     <span class="label">Project Case Studies</span>
                     <h2 class="fr">
-                        <span>I turn </span><span class="hl" style="--c:var(--pink)">complex,</span><span> data-heavy systems into </span><span>interfaces that feel </span><span class="hl" style="--c:var(--orange)">effortless.</span>
+                        <span>I turn </span><span class="hl" style="--c:var(--purple)">complex,</span><span> data-heavy systems into </span><span>interfaces that feel </span><span class="hl" style="--c:var(--orange)">effortless.</span>
                     </h2>
                 </div>
                 <div class="div"></div>
@@ -67,7 +85,7 @@
                             <div><b class="fr">200+ components</b><span>Scale</span></div>
                             <div><b class="fr">3x faster delivery</b><span>Velocity</span></div>
                         </div>
-                        <a class="read" href="#"><span>Read Full Case Study</span><span class="ar"><span>→</span></span></a>
+                        <a class="read" href="jerp.html"><span>Read Full Case Study</span><span class="ar"><span>→</span></span></a>
                     </div>
                 </article>
                 <div class="div"></div>
@@ -129,6 +147,43 @@
                 </div>
             </section>
 
+            <!-- Interests -->
+            <section class="interests" id="interests">
+                <div class="interest-head rv">
+                    <div class="interest-title">
+                        <span class="label">A few things I follow</span>
+                        <h2 class="fr">My <span class="hl" style="--c:var(--orange)">interests.</span></h2>
+                    </div>
+                    <p>Curiosity keeps my work moving. These are a few of the ideas I keep exploring.</p>
+                </div>
+                <div class="interest-grid">
+                    <article class="interest-item rv" style="--c:var(--green);--d:.05s">
+                        <div class="interest-meta"><i class="fr">01</i><span class="label">Systems thinking</span></div>
+                        <h3 class="fr">Making complexity feel clear</h3>
+                        <p>Finding the patterns that help dense products feel calm, useful, and easy to navigate.</p>
+                        <span class="interest-arrow" aria-hidden="true">→</span>
+                    </article>
+                    <article class="interest-item rv" style="--c:var(--blue);--d:.1s">
+                        <div class="interest-meta"><i class="fr">02</i><span class="label">Creative technology</span></div>
+                        <h3 class="fr">Where design meets code</h3>
+                        <p>Turning visual ideas into responsive experiences through thoughtful front-end craft.</p>
+                        <span class="interest-arrow" aria-hidden="true">→</span>
+                    </article>
+                    <article class="interest-item rv" style="--c:var(--purple);--d:.15s">
+                        <div class="interest-meta"><i class="fr">03</i><span class="label">Emerging tools</span></div>
+                        <h3 class="fr">Human-centered AI workflows</h3>
+                        <p>Exploring how new tools can support better decisions without losing the human touch.</p>
+                        <span class="interest-arrow" aria-hidden="true">→</span>
+                    </article>
+                    <article class="interest-item rv" style="--c:var(--orange);--d:.2s">
+                        <div class="interest-meta"><i class="fr">04</i><span class="label">Visual storytelling</span></div>
+                        <h3 class="fr">Details that carry meaning</h3>
+                        <p>Noticing how type, imagery, and motion can make information more memorable.</p>
+                        <span class="interest-arrow" aria-hidden="true">→</span>
+                    </article>
+                </div>
+            </section>
+
             <!-- Contact -->
             <section class="contact" id="contact">
                 <div class="cwrap">
@@ -146,6 +201,7 @@
         <div class="page cs fr" id="view-case" hidden>
             <header class="nav" id="nav-case"></header>
 
+            <div class="case-content solara-case">
             <section>
                 <div class="cs-meta"><span class="label">Solara Co. Branding &amp; E-Commerce</span><span class="label">Case Study — Design &amp; Dev</span></div>
                 <div class="cs-banner rv">
@@ -154,7 +210,7 @@
                         <div class="badges"><span class="badge2" style="background:var(--green)">Identity</span><span class="badge2" style="background:var(--orange)">E-Commerce</span></div>
                         <div class="cs-titles">
                             <h1 class="cs-title">Solara: Natural Living</h1>
-                            <div class="cs-hl"><span class="hl" style="--c:var(--pink)">Reimagined</span><p>for the Modern Web.</p></div>
+                            <div class="cs-hl"><span class="hl" style="--c:var(--purple)">Reimagined</span><p>for the Modern Web.</p></div>
                         </div>
                     </div>
                 </div>
@@ -244,13 +300,13 @@
 
             <section class="cs-nx">
                 <div class="sl rv"><i>06</i><span class="label">Up Next</span></div>
-                <a class="nl rv" href="#work">
+                <a class="nl rv" href="jerp.html">
                     <div class="t">
                         <small>Case Study 02</small>
-                        <h2>JERP: Reimagining Enterprise ERP Modules</h2>
-                        <div class="act"><span>View Next Project</span><b>→</b></div>
+                        <h2>JERP: Finance &amp; Controlling</h2>
+                        <div class="act"><span>View Case Study</span><b>→</b></div>
                     </div>
-                    <div class="pv"><picture><source media="(max-width:900px)" srcset="images/figma/18a90d0f-48f3-42db-9cce-6cdc216aa701.png"><img alt="" src="images/figma/51bcc0a7-754c-4046-9ce4-8f58c407d682.png"></picture></div>
+                    <div class="pv"><picture><source media="(max-width:900px)" srcset="images/figma/c8903899-1122-4c2f-83c6-a84b48c4969e.png"><img alt="JERP ERP interface" src="images/figma/14730e3c-a044-4d0b-ab27-73cb9e58087e.png"></picture></div>
                 </a>
             </section>
 
@@ -265,6 +321,8 @@
                     <div class="foot"><span>© 2026 Ariful Islam — Sr. Product (UI/UX) Designer</span><span>Dhaka, Bangladesh</span></div>
                 </div>
             </section>
+            </div>
+
         </div>
 
         <div class="menu" id="menu" aria-hidden="true">
@@ -274,7 +332,8 @@
                 <a class="ml" href="#about" data-sec="about" style="--i:2"><b class="fr">About</b><small class="bg" style="--c:var(--purple)">02</small></a><hr>
                 <a class="ml" href="#experience" data-sec="experience" style="--i:3"><b class="fr">Services</b><small>03</small></a><hr>
                 <a class="ml" href="#work" data-sec="work" style="--i:4"><b class="fr">Projects</b><small class="bg" style="--c:var(--orange)">04</small></a><hr>
-                <a class="ml" href="#contact" data-sec="contact" style="--i:5"><b class="fr">Contact</b><small>05</small></a>
+                <a class="ml" href="#interests" data-sec="interests" style="--i:5"><b class="fr">Interests</b><small>05</small></a><hr>
+                <a class="ml" href="#contact" data-sec="contact" style="--i:6"><b class="fr">Contact</b><small>06</small></a>
             </nav>
             <div class="mfoot">
                 <div class="mstate fr"><span>Let's</span><span class="w">work</span><span>together</span></div>
