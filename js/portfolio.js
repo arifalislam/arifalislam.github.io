@@ -5,6 +5,25 @@
   var themeQuery=matchMedia('(prefers-color-scheme: dark)');
   var reduceMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
   var themeButtons=[];
+  var preloader=document.getElementById('preloader');
+  if(preloader){
+    var preloaderStartedAt=Date.now();
+    var loadingProgress=document.getElementById('loading-progress');
+    var progress=0;
+    var progressTimer=setInterval(function(){
+      if(progress>=90){clearInterval(progressTimer);return;}
+      progress=Math.min(90,progress+1);
+      loadingProgress.textContent=String(progress).padStart(2,'0');
+    },40);
+    addEventListener('load',function(){
+      clearInterval(progressTimer);
+      loadingProgress.textContent='100';
+      setTimeout(function(){
+        preloader.classList.add('is-done');
+        setTimeout(function(){preloader.remove();},750);
+      },Math.max(0,1500-(Date.now()-preloaderStartedAt)));
+    },{once:true});
+  }
   function updateTheme(mode,save){
     themeMode=mode;
     var dark=mode==='dark'||(mode==='system'&&themeQuery.matches);
