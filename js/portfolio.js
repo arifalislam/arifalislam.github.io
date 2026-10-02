@@ -3,6 +3,7 @@
   var themeRoot=document.documentElement;
   var themeMode=themeRoot.dataset.themeMode||'system';
   var themeQuery=matchMedia('(prefers-color-scheme: dark)');
+  var reduceMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
   var themeButtons=[];
   function updateTheme(mode,save){
     themeMode=mode;
@@ -33,8 +34,30 @@
     else if(themeQuery.addListener) themeQuery.addListener(function(){if(themeMode==='system') updateTheme('system',false);});
   }
 
+  function setupScrollReveals(){
+    var elements=[].slice.call(document.querySelectorAll('.rv,.div'));
+    if(!elements.length) return;
+    if(reduceMotion||!('IntersectionObserver' in window)){
+      elements.forEach(function(element){element.classList.add('in');});
+      return;
+    }
+    document.body.classList.add('scroll-reveal-enabled');
+    var observer=new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(!entry.isIntersecting) return;
+        entry.target.classList.add('in');
+        observer.unobserve(entry.target);
+      });
+    },{threshold:.15,rootMargin:'0px 0px -5% 0px'});
+    elements.forEach(function(element){observer.observe(element);});
+    [].slice.call(document.querySelectorAll('.row.rv')).forEach(function(row,index){
+      row.style.setProperty('--d',(index*.08)+'s');
+    });
+  }
+
   if(!document.getElementById('view-home')){
     setupTheme();
+    setupScrollReveals();
     var standaloneMenu=document.getElementById('menu'), standaloneBurger=document.querySelector('.burger');
     function closeStandaloneMenu(){standaloneMenu.classList.remove('open');standaloneMenu.setAttribute('aria-hidden','true');standaloneBurger.setAttribute('aria-expanded','false');document.body.classList.remove('menu-open');}
     document.addEventListener('click',function(e){
@@ -55,6 +78,7 @@
   function closeMenu(){ menu.classList.remove('open'); menu.setAttribute('aria-hidden','true'); burger.setAttribute('aria-expanded','false'); document.body.classList.remove('menu-open'); }
   document.addEventListener('click',function(e){ if(e.target.closest && e.target.closest('.burger')) openMenu(); });
   setupTheme();
+  setupScrollReveals();
   menu.querySelector('.close').addEventListener('click',closeMenu);
   addEventListener('keydown',function(e){ if(e.key==='Escape') closeMenu(); });
   addEventListener('resize',function(){ if(innerWidth>900) closeMenu(); });
@@ -105,7 +129,7 @@
     if(!target) return;
     e.preventDefault();
     closeMenu();
-    window.scrollTo({top:target.getBoundingClientRect().top+window.scrollY,behavior:'smooth'});
+    window.scrollTo({top:target.getBoundingClientRect().top+window.scrollY,behavior:reduceMotion?'auto':'smooth'});
   });
 
   addEventListener('scroll',function(){ setActive(); updateHeroCover(); },{passive:true});
