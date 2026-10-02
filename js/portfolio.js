@@ -100,7 +100,7 @@
   function updateHeroCover(){
     if(!heroStage) return;
     var progress=Math.max(0,Math.min(1,-heroStage.getBoundingClientRect().top/heroStage.offsetHeight));
-    heroStage.style.setProperty('--hero-bg-scale',(1+progress*.16).toFixed(3));
+    heroStage.style.setProperty('--hero-bg-scale',(1+(1-progress)*.16).toFixed(3));
   }
   if(heroStage){
     heroStage.addEventListener('pointermove',function(e){
@@ -108,12 +108,10 @@
       var rect=heroStage.getBoundingClientRect();
       var x=(e.clientX-rect.left)/rect.width-.5;
       var y=(e.clientY-rect.top)/rect.height-.5;
-      heroStage.classList.add('is-hovered');
       heroStage.style.setProperty('--hero-bg-x',(x*-18).toFixed(1)+'px');
       heroStage.style.setProperty('--hero-bg-y',(y*-12).toFixed(1)+'px');
     });
     heroStage.addEventListener('pointerleave',function(){
-      heroStage.classList.remove('is-hovered');
       heroStage.style.setProperty('--hero-bg-x','0px');
       heroStage.style.setProperty('--hero-bg-y','0px');
     });
