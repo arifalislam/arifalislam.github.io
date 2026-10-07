@@ -14,14 +14,17 @@
                 document.documentElement.dataset.theme=dark?'dark':'light';
             })();
         </script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
         <div class="preloader" id="preloader" role="status" aria-label="Loading portfolio">
             <div class="preloader-words" aria-hidden="true">
-                <span>Identify Problem</span>
-                <span>Plan the Concept</span>
-                <span>Building Things</span>
+                <span>Disscuss</span>
+                <span>Identify</span>
+                <span>Builds</span>
             </div>
             <div class="preloader-progress" aria-hidden="true"><span id="loading-progress">00</span><span>%</span></div>
         </div>
@@ -40,7 +43,7 @@
                     <a class="label" href="#contact">Contact</a>
                 </nav>
                 <div class="tools">
-                    <div class="btn cv"><span class="ic"><picture><source media="(max-width:900px)" srcset="images/figma/2354f9d8-5278-4d03-8364-8a2ddc9ea9be.svg"><img alt="" src="images/figma/2106d6c3-8b2b-41fc-a728-a4de58cad21e.svg"></picture></span><span class="label"><span class="d">Get CV</span><span class="m">CV</span></span></div>
+                    <a class="btn cv" href="files/ARIF%20-%20UIUX%20Designer.pdf" target="_blank" rel="noopener" aria-label="Open CV in a new tab: ARIF - UIUX Designer"><span class="ic"><picture><source media="(max-width:900px)" srcset="images/figma/2354f9d8-5278-4d03-8364-8a2ddc9ea9be.svg"><img alt="" src="images/figma/2106d6c3-8b2b-41fc-a728-a4de58cad21e.svg"></picture></span><span class="label"><span class="d">Get CV</span><span class="m">CV</span></span></a>
                     <button class="btn theme-toggle" type="button" data-theme-mode="system" aria-label="Theme: System default" title="Theme: System default">
                         <span class="ic" aria-hidden="true">
                             <svg class="theme-icon icon-system" viewBox="0 0 16 16" fill="none"><rect x="2" y="2.5" width="12" height="8.5" rx="1" stroke="currentColor" stroke-width="1.4"/><path d="M6 14h4M8 11v3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
@@ -64,10 +67,9 @@
                 <div class="rule r1"><img alt="" src="images/figma/4766d09e-63fb-443e-a6aa-51ce21c0237a.svg"></div>
                 <div class="stage">
                     <picture><img class="bg" alt="" src="images/hero-background.jpg"></picture>
-                    <h1 class="h1 fr">
-                        <p class="line"><span style="transition-delay:.15s">Crafting the</span></p>
-                        <div class="xbox"><span>Experience</span></div>
-                        <p class="line"><span style="transition-delay:.35s">Driving Result.</span></p>
+                    <h1 class="h1 fr" aria-label="Crafting the experience, challenges, navigation, and solutions. Driving results.">
+                        <p class="line"><span style="transition-delay:.15s">Crafting the</span><span class="xbox" style="transition-delay:.25s"><span aria-live="off">Experience</span></span></p>
+                        <p class="line"><span style="transition-delay:.35s">Driving Results.</span></p>
                     </h1>
                 </div>
                 <div class="rule r4"><img alt="" src="images/figma/1e6766a9-c82f-479d-93be-586191db1afd.svg"></div>

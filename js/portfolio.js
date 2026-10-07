@@ -116,24 +116,39 @@
   }
 
   var heroStage=document.querySelector('.stage');
+  var heroWord=document.querySelector('.xbox span');
+  if(heroWord&&!reduceMotion){
+    var heroWords=['Experience','Challenges','Navigation','Solutions'];
+    var heroWordIndex=0;
+    setInterval(function(){
+      heroWord.classList.add('is-changing');
+      setTimeout(function(){
+        heroWordIndex=(heroWordIndex+1)%heroWords.length;
+        heroWord.textContent=heroWords[heroWordIndex];
+        heroWord.classList.remove('is-changing');
+      },250);
+    },3200);
+  }
   function updateHeroCover(){
     if(!heroStage) return;
     var progress=Math.max(0,Math.min(1,-heroStage.getBoundingClientRect().top/heroStage.offsetHeight));
-    heroStage.style.setProperty('--hero-bg-scale',(1+(1-progress)*.16).toFixed(3));
+    heroStage.style.setProperty('--hero-bg-scale',(1.08+(1-progress)*.08).toFixed(3));
   }
   if(heroStage){
-    heroStage.addEventListener('pointermove',function(e){
-      if(e.pointerType!=='mouse') return;
-      var rect=heroStage.getBoundingClientRect();
-      var x=(e.clientX-rect.left)/rect.width-.5;
-      var y=(e.clientY-rect.top)/rect.height-.5;
-      heroStage.style.setProperty('--hero-bg-x',(x*-18).toFixed(1)+'px');
-      heroStage.style.setProperty('--hero-bg-y',(y*-12).toFixed(1)+'px');
-    });
-    heroStage.addEventListener('pointerleave',function(){
-      heroStage.style.setProperty('--hero-bg-x','0px');
-      heroStage.style.setProperty('--hero-bg-y','0px');
-    });
+    if(!reduceMotion){
+      heroStage.addEventListener('pointermove',function(e){
+        if(e.pointerType!=='mouse') return;
+        var rect=heroStage.getBoundingClientRect();
+        var x=(e.clientX-rect.left)/rect.width-.5;
+        var y=(e.clientY-rect.top)/rect.height-.5;
+        heroStage.style.setProperty('--hero-bg-x',(x*-26).toFixed(1)+'px');
+        heroStage.style.setProperty('--hero-bg-y',(y*-18).toFixed(1)+'px');
+      });
+      heroStage.addEventListener('pointerleave',function(){
+        heroStage.style.setProperty('--hero-bg-x','0px');
+        heroStage.style.setProperty('--hero-bg-y','0px');
+      });
+    }
     updateHeroCover();
   }
 
