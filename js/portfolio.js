@@ -9,19 +9,25 @@
   if(preloader){
     var preloaderStartedAt=Date.now();
     var loadingProgress=document.getElementById('loading-progress');
+    var loadingProgressBar=document.getElementById('loading-progress-bar');
     var progress=0;
+    var pageLoaded=false;
     var progressTimer=setInterval(function(){
-      if(progress>=90){clearInterval(progressTimer);return;}
-      progress=Math.min(90,progress+1);
+      if(progress>=100){clearInterval(progressTimer);return;}
+      progress=Math.min(pageLoaded?100:90,progress+1);
       loadingProgress.textContent=String(progress).padStart(2,'0');
-    },40);
+      loadingProgressBar.style.width=progress+'%';
+      preloader.setAttribute('aria-valuenow',String(progress));
+      if(progress===100){
+        clearInterval(progressTimer);
+        setTimeout(function(){
+          preloader.classList.add('is-done');
+          setTimeout(function(){preloader.remove();},750);
+        },Math.max(0,750-(Date.now()-preloaderStartedAt)));
+      }
+    },20);
     addEventListener('load',function(){
-      clearInterval(progressTimer);
-      loadingProgress.textContent='100';
-      setTimeout(function(){
-        preloader.classList.add('is-done');
-        setTimeout(function(){preloader.remove();},750);
-      },Math.max(0,1500-(Date.now()-preloaderStartedAt)));
+      pageLoaded=true;
     },{once:true});
   }
   function updateTheme(mode,save){
@@ -40,6 +46,27 @@
     });
     if(save){try{localStorage.setItem('portfolio-theme',mode);}catch(error){}}
   }
+  function setupInterestVideoSound(){
+    var video=document.querySelector('.interest-photo--portrait video');
+    var button=document.querySelector('.interest-video-sound');
+    if(!video||!button) return;
+    video.volume=.45;
+    button.addEventListener('click',function(){
+      video.muted=!video.muted;
+      button.setAttribute('aria-pressed',String(!video.muted));
+      button.setAttribute('aria-label',video.muted?'Enable video sound':'Mute video sound');
+      button.textContent=video.muted?'Enable sound':'Mute sound';
+      var playback=video.play();
+      if(playback&&typeof playback.catch==='function'){
+        playback.catch(function(error){
+          button.textContent='Playback unavailable';
+          button.setAttribute('aria-label','Video playback failed');
+          button.title=error.message;
+        });
+      }
+    });
+  }
+  setupInterestVideoSound();
   function setupTheme(){
     themeButtons=[].slice.call(document.querySelectorAll('.theme-toggle'));
     updateTheme(themeMode,false);
@@ -118,7 +145,7 @@
   var heroStage=document.querySelector('.stage');
   var heroWord=document.querySelector('.xbox span');
   if(heroWord&&!reduceMotion){
-    var heroWords=['Experience','Challenges','Navigation','Solutions'];
+    var heroWords=['Products','Workflows','AI tools','Interfaces'];
     var heroWordIndex=0;
     setInterval(function(){
       heroWord.classList.add('is-changing');
