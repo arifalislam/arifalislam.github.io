@@ -6,7 +6,7 @@
   var reduceMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
   var themeButtons=[];
   var preloader=document.getElementById('preloader');
-  if(preloader){
+  if(preloader&&themeRoot.dataset.preloader!=='skip'){
     var preloaderStartedAt=Date.now();
     var loadingProgress=document.getElementById('loading-progress');
     var loadingProgressBar=document.getElementById('loading-progress-bar');
@@ -96,9 +96,6 @@
       });
     },{threshold:.15,rootMargin:'0px 0px -5% 0px'});
     elements.forEach(function(element){observer.observe(element);});
-    [].slice.call(document.querySelectorAll('.row.rv')).forEach(function(row,index){
-      row.style.setProperty('--d',(index*.08)+'s');
-    });
   }
 
   if(!document.getElementById('view-home')){
@@ -145,7 +142,7 @@
   var heroStage=document.querySelector('.stage');
   var heroWord=document.querySelector('.xbox span');
   if(heroWord&&!reduceMotion){
-    var heroWords=['Products','Workflows','AI tools','Interfaces'];
+    var heroWords=['Experiences','Thinking','Strategy', 'Solutions'];
     var heroWordIndex=0;
     setInterval(function(){
       heroWord.classList.add('is-changing');

@@ -13,6 +13,12 @@
                 var dark=mode==='dark'||(mode==='system'&&matchMedia('(prefers-color-scheme: dark)').matches);
                 document.documentElement.dataset.themeMode=mode;
                 document.documentElement.dataset.theme=dark?'dark':'light';
+                var preloaderSeen=false;
+                try{
+                    preloaderSeen=localStorage.getItem('portfolio-preloader-seen')==='true';
+                    if(!preloaderSeen) localStorage.setItem('portfolio-preloader-seen','true');
+                }catch(error){}
+                if(preloaderSeen) document.documentElement.dataset.preloader='skip';
             })();
         </script>
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -79,13 +85,13 @@
                     <picture><img class="bg" alt="" src="images/hero-background.jpg"></picture>
                     <h1 class="h1 fr" aria-label="Designing useful products, AI-assisted workflows, clear interfaces, and production-ready experiences.">
                         <p class="line">
-                            <span style="transition-delay:.15s"> Engineering </span>
-                            <span class="xbox" style="transition-delay:.25s">
-                                <span aria-live="off"> Products </span>
+                            <span> Accelereting </span>
+                            <span class="xbox">
+                                <span aria-live="off" style="margin-left: 8px;"> UI/UX Design </span>
                             </span>
                         </p>
                         <p class="line">
-                            <span style="transition-delay:.35s"> That driving real impacts. </span>
+                            <span> by AI Workflow that drive result. </span>
                         </p>
                     </h1>
                 </div>
@@ -102,14 +108,14 @@
                 <div class="wh rv">
                     <span class="label">Project Case Studies</span>
                     <h2 class="fr">
-                        <span>I make </span><span class="hl" style="--c:var(--purple)">complex workflows</span><span> easier to understand, </span><br/><span>use, and build on.</span>
+                        <span>I make </span><span class="hl hl-purple">complex workflows</span><span> easier to understand, </span><br/><span>use, and build on.</span>
                     </h2>
                 </div>
                 <div class="div"></div>
 
                 <article class="case">
-                    <div class="pic rv"><picture><source media="(max-width:900px)" srcset="images/figma/c8903899-1122-4c2f-83c6-a84b48c4969e.png"><img alt="" style="height:520px" src="images/figma/14730e3c-a044-4d0b-ab27-73cb9e58087e.png"></picture></div>
-                    <div class="info rv" style="--a:#22b870;--d:.1s">
+                    <div class="pic rv"><picture><source media="(max-width:900px)" srcset="images/figma/c8903899-1122-4c2f-83c6-a84b48c4969e.png"><img alt="" src="images/projects/Professional HR Dashboard Workspace.png"></picture></div>
+                    <div class="info rv case-info--hr rv-delay-short">
                         <div class="tag"><i class="fr">01</i><span class="label">JERP ERP · Human Resources</span></div>
                         <h3 class="fr">Connecting everyday work across HRM</h3>
                         <p class="d">A web HRM experience connecting organization management, employee access, scheduling, leave, payroll, and employee services.</p>
@@ -118,13 +124,13 @@
                             <div><b class="fr">Time &amp; leave</b><span>Workforce</span></div>
                             <div><b class="fr">Payroll</b><span>Compensation</span></div>
                         </div>
-                        <a class="read" href="jerp.html"><span>Read Full Case Study</span><span class="ar"><span>→</span></span></a>
+                        <a class="read" href="jerp-hrm.html"><span>Read Full Case Study</span><span class="ar"><span>→</span></span></a>
                     </div>
                 </article>
                 <div class="div"></div>
 
                 <article class="case flip">
-                    <div class="info rv" style="--a:var(--blue)">
+                    <div class="info rv case-info--finance">
                         <div class="tag"><i class="fr">02</i><span class="label">JERP ERP · Finance &amp; Controlling</span></div>
                         <h3 class="fr">Bringing financial operations into one system</h3>
                         <p class="d">A connected finance and controlling workspace spanning accounting foundations, bill review and payment, cost management, assets, maintenance, and banking.</p>
@@ -133,15 +139,15 @@
                             <div><b class="fr">Bills &amp; costs</b><span>Review &amp; control</span></div>
                             <div><b class="fr">Assets &amp; banking</b><span>Operations</span></div>
                         </div>
-                        <a class="read" href="fico.html"><span>Read Full Case Study</span><span class="ar"><span>→</span></span></a>
+                        <a class="read" href="jerp-fico.html"><span>Read Full Case Study</span><span class="ar"><span>→</span></span></a>
                     </div>
-                    <div class="pic rv" style="--d:.1s"><picture><source media="(max-width:900px)" srcset="images/figma/jerp-fico-cover.webp"><img alt="JERP Finance and Controlling design cover" style="height:540px" src="images/figma/jerp-fico-cover.webp"></picture></div>
+                    <div class="pic rv rv-delay-short"><picture><source media="(max-width:1200px; height:auto;)" srcset="images/figma/jerp-fico-cover.webp"><img alt="JERP Finance and Controlling design cover" src="images/projects/Fico-thumb.png"></picture></div>
                 </article>
                 <div class="div"></div>
 
                 <article class="case">
-                    <div class="pic rv"><picture><source media="(max-width:900px)" srcset="images/figma/0264cc66-0c11-4aea-9021-ad4b5924b620.png"><img alt="" style="height:530px" src="images/figma/62c548c0-f59b-4405-a1c5-831f545aeeb9.png"></picture></div>
-                    <div class="info rv" style="--a:var(--orange);--d:.1s">
+                    <div class="pic rv"><picture><source media="(max-width:900px)" srcset="images/figma/0264cc66-0c11-4aea-9021-ad4b5924b620.png"><img alt="" src="images/figma/62c548c0-f59b-4405-a1c5-831f545aeeb9.png"></picture></div>
+                    <div class="info rv case-info--product rv-delay-short">
                         <div class="tag"><i class="fr">03</i><span class="label">Product Design · Engineering</span></div>
                         <h3 class="fr">From product thinking to production-ready UI</h3>
                         <p class="d">I bridge interface design and front-end implementation, building responsive experiences with attention to usability, accessibility, and performance.</p>
@@ -159,7 +165,7 @@
             <section class="about" id="about">
                 <span class="label rv">About me</span>
                 <h2 class="fr rv">
-                    <span>I'm Arif —</span><span class="hl" style="--c:var(--purple)">a product designer</span><span>and design engineer focused on enterprise SaaS, <span class="hl" style="--c:var(--orange)">AI-enabled</span> workflows, and human first real systems.</span>
+                    <span>I'm Arif —</span><span class="hl hl-purple">a product designer</span><span>and design engineer focused on enterprise SaaS, <span class="hl hl-orange">AI-enabled</span> workflows, and human first real systems.</span>
                 </h2>
                 <p class="bio rv">With 6+ years across UX design and front-end development, I work across discovery, information architecture, interaction design, prototyping, and implementation. I use AI where it helps teams explore, automate, or make decisions—while keeping people in control and outcomes measurable.</p>
                 <div class="stats rv">
@@ -173,11 +179,11 @@
             <section class="exp" id="experience">
                 <span class="label rv">Background Experience</span>
                 <div class="rows">
-                    <div class="row rv" style="--c:#2eb77d"><span class="badge">2024 — 2026</span><h4 class="fr">Sr. UX Designer</h4><span class="co">Mononsoft Ltd. (JMI Group)</span></div>
-                    <div class="row rv" style="--c:#e36b22"><span class="badge">2023 – 2024</span><h4 class="fr">UX/UI Designer [Mid-level]</h4><span class="co">Notionhive Bangladesh</span></div>
-                    <div class="row rv" style="--c:#8848ce"><span class="badge">2021 – 2023</span><h4 class="fr">UIUX Design Engineer</h4><span class="co">Mononsoft Ltd.</span></div>
-                    <div class="row rv" style="--c:#3786f5"><span class="badge">2020 – 2021</span><h4 class="fr">Frontend UI Developer</h4><span class="co">MaxSOP</span></div>
-                    <div class="row rv" style="--c:#f5a623"><span class="badge">2018 – 2020</span><h4 class="fr">Jr. Web Designer</h4><span class="co">Self-Employed</span></div>
+                    <div class="row row--monon rv"><span class="badge">2024 — 2026</span><h4 class="fr">Sr. UX Designer</h4><span class="co">Mononsoft Ltd. (JMI Group)</span></div>
+                    <div class="row row--notionhive rv"><span class="badge">2023 – 2024</span><h4 class="fr">UX/UI Designer [Mid-level]</h4><span class="co">Notionhive Bangladesh</span></div>
+                    <div class="row row--monon-alt rv"><span class="badge">2021 – 2023</span><h4 class="fr">UIUX Design Engineer</h4><span class="co">Mononsoft Ltd.</span></div>
+                    <div class="row row--maxsop rv"><span class="badge">2020 – 2021</span><h4 class="fr">Frontend UI Developer</h4><span class="co">MaxSOP</span></div>
+                    <div class="row row--self-employed rv"><span class="badge">2018 – 2020</span><h4 class="fr">Jr. Web Designer</h4><span class="co">Self-Employed</span></div>
                 </div>
             </section>
 
@@ -186,7 +192,7 @@
                 <div class="interest-head rv">
                     <div class="interest-title">
                         <span class="label">How I approach in life</span>
-                        <h2 class="fr">Learn<span class="hl" style="--c:var(--orange)">Everything</span>about me.</h2>
+                        <h2 class="fr">Learn<span class="hl hl-orange">Everything</span>about me.</h2>
                     </div>
                     <p>A practical mix of systems thinking, human-centered AI, product design, and hands-on engineering.</p>
                 </div>
@@ -195,22 +201,22 @@
                 
                 <div class="interest-layout">
                     <div class="interest-notes">
-                        <article class="interest-note" style="--note:#fff1a8;--tape:#d4b84e;--tilt:-1.5deg">
+                        <article class="interest-note interest-note--systems">
                             <span class="interest-note-index">01 / THINK</span>
                             <h3 class="fr">Systems thinking</h3>
                             <p>Turning dense information and multi-step tasks into understandable product flows.</p>
                         </article>
-                        <article class="interest-note" style="--note:#ffd7df;--tape:#d88b9c;--tilt:1.2deg">
+                        <article class="interest-note interest-note--design">
                             <span class="interest-note-index">02 / MAKE</span>
                             <h3 class="fr">Design meets code</h3>
                             <p>Working from interaction model to responsive UI, with careful implementation details.</p>
                         </article>
-                        <article class="interest-note" style="--note:#cfe7f3;--tape:#87b6ce;--tilt:1deg">
+                        <article class="interest-note interest-note--ai">
                             <span class="interest-note-index">03 / EXPLORE</span>
                             <h3 class="fr">Human-first AI</h3>
                             <p>Applying AI to real tasks with clear user control, useful feedback, and responsible defaults.</p>
                         </article>
-                        <article class="interest-note" style="--note:#dceec9;--tape:#a0bd7e;--tilt:-1.2deg">
+                        <article class="interest-note interest-note--storytelling">
                             <span class="interest-note-index">04 / NOTICE</span>
                             <h3 class="fr">Visual storytelling</h3>
                             <p>Using evidence and iteration to improve task clarity, usability, and product quality.</p>
@@ -219,7 +225,7 @@
 
                     <div class="interest-collage" aria-label="A collage of Ariful and his creative work">
                         <figure class="interest-photo interest-photo--portrait">
-                            <video src="files/Biography_Reel_v2_9x16.mp4" autoplay muted playsinline loop preload="metadata" aria-label="."></video>
+                            <video src="files/Biography_Reel_v2_9x16.mov" autoplay muted playsinline loop preload="metadata" aria-label="."></video>
                             <button class="interest-video-sound" type="button" aria-label="Enable video sound" aria-pressed="false">Enable sound</button>
                         </figure>
                         <figure class="interest-photo interest-photo--process">
@@ -250,7 +256,7 @@
             <section class="contact" id="contact">
                 <div class="cwrap">
                     <span class="label">Contact</span>
-                    <div class="big fr rv"><span>Have a </span><span class="w" style="font-weight:300">System</span><span>to improve?</span></div>
+                    <div class="big fr rv"><span>Have a </span><span class="w contact-highlight">System</span><span>to improve?</span></div>
                     <div class="mailrow rv">
                         <a class="mail" href="mailto:arifalislam642@gmail.com"><span>arifalislam642@gmail.com</span><u></u></a>
                         <div class="soc">
@@ -268,12 +274,12 @@
         <div class="menu" id="menu" aria-hidden="true">
             <div class="mnav"><a class="mbrand fr" href="#top">Ariful Islam<i>.</i></a><button class="close" aria-label="Close menu"></button></div>
             <nav class="mlinks">
-                <a class="ml on" href="#top" data-sec="top" style="--i:1"><b class="fr">Home<i class="dot"></i></b><small>01</small></a><hr>
-                <a class="ml" href="#about" data-sec="about" style="--i:2"><b class="fr">About</b><small class="bg" style="--c:var(--purple)">02</small></a><hr>
-                <a class="ml" href="#experience" data-sec="experience" style="--i:3"><b class="fr">Experience</b><small>03</small></a><hr>
-                <a class="ml" href="#work" data-sec="work" style="--i:4"><b class="fr">Projects</b><small class="bg" style="--c:var(--orange)">04</small></a><hr>
-                <a class="ml" href="#interests" data-sec="interests" style="--i:5"><b class="fr">Interests</b><small>05</small></a><hr>
-                <a class="ml" href="#contact" data-sec="contact" style="--i:6"><b class="fr">Contact</b><small>06</small></a>
+                <a class="ml on" href="#top" data-sec="top"><b class="fr">Home<i class="dot"></i></b><small>01</small></a><hr>
+                <a class="ml" href="#about" data-sec="about"><b class="fr">About</b><small class="bg bg-purple">02</small></a><hr>
+                <a class="ml" href="#experience" data-sec="experience"><b class="fr">Experience</b><small>03</small></a><hr>
+                <a class="ml" href="#work" data-sec="work"><b class="fr">Projects</b><small class="bg bg-orange">04</small></a><hr>
+                <a class="ml" href="#interests" data-sec="interests"><b class="fr">Interests</b><small>05</small></a><hr>
+                <a class="ml" href="#contact" data-sec="contact"><b class="fr">Contact</b><small>06</small></a>
             </nav>
             <div class="mfoot">
                 <div class="mstate fr"><span>Have a</span><span class="w">workflow</span><span>to improve?</span></div>
