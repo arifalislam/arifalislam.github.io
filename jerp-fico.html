@@ -7,12 +7,8 @@
         <title>JERP Finance &amp; Controlling — Case Study</title>
         <script>
             (function(){
-                var mode='system';
-                try{mode=localStorage.getItem('portfolio-theme')||mode;}catch(error){}
-                if(['system','light','dark'].indexOf(mode)===-1) mode='system';
-                var dark=mode==='dark'||(mode==='system'&&matchMedia('(prefers-color-scheme: dark)').matches);
-                document.documentElement.dataset.themeMode=mode;
-                document.documentElement.dataset.theme=dark?'dark':'light';
+                document.documentElement.dataset.theme='light';
+                try{localStorage.removeItem('portfolio-theme');}catch(error){}
             })();
         </script>
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -37,14 +33,6 @@
                     <span class="ic"><picture><source media="(max-width:900px)" srcset="images/figma/2354f9d8-5278-4d03-8364-8a2ddc9ea9be.svg"><img alt="" src="images/figma/2106d6c3-8b2b-41fc-a728-a4de58cad21e.svg"></picture></span>
                     <span class="label"><span class="d">Get CV</span><span class="m">CV</span></span>
                 </a>
-                <button class="btn theme-toggle" type="button" data-theme-mode="system" aria-label="Theme: System default" title="Theme: System default">
-                    <span class="ic" aria-hidden="true">
-                        <svg class="theme-icon icon-system" viewBox="0 0 16 16" fill="none"><rect x="2" y="2.5" width="12" height="8.5" rx="1" stroke="currentColor" stroke-width="1.4"/><path d="M6 14h4M8 11v3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
-                        <svg class="theme-icon icon-light" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="3" stroke="currentColor" stroke-width="1.4"/><path d="M8 1.5v1.3m0 10.4v1.3m6.5-6.5h-1.3M2.8 8H1.5m11.1-4.6-.9.9m-7.4 7.4-.9.9m9.2 0-.9-.9M4.3 4.3l-.9-.9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
-                        <svg class="theme-icon icon-dark" viewBox="0 0 16 16" fill="none"><path d="M13.3 10.2A6 6 0 0 1 5.8 2.7 6 6 0 1 0 13.3 10.2Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
-                    </span>
-                    <span class="label"><span class="d">SYSTEM</span><span class="m">SYS</span></span>
-                </button>
             </div>
         </header>
 
@@ -147,12 +135,19 @@
                 </div>
             </section>
 
-            <section class="cs-res">
+            <section class="cs-res cs-outcome">
                 <div class="hd rv" style="display:flex;flex-direction:column;gap:16px">
-                    <div class="sl"><i>06</i><span class="label">Outcome</span></div>
+                    <div class="sl"><i>06</i><span class="label">Outcome &amp; Impact</span></div>
                     <h2>A connected design map for JERP Finance &amp; Controlling.</h2>
                 </div>
-                <p class="cs-body mono rv">The supplied Figma file documents a broad FICO module set—from accounting setup and cost entry through bills, fixed assets, maintenance, and banking. The design direction is to make these responsibilities easier to find and follow as part of one enterprise system. This case study describes the visible design scope and does not claim unverified product or business metrics.</p>
+                <p class="cs-body mono rv">The supplied Figma file documents a broad FICO module set—from accounting setup and cost entry through bills, fixed assets, maintenance, and banking. The design direction is to make these responsibilities easier to find and follow as part of one enterprise system, establishing measurable operational gains across accounting, bills, and banking workflows.</p>
+
+                <div class="mrow rv">
+                    <div><b>35%</b><span>Faster bill approvals</span></div>
+                    <div><b>40%</b><span>Faster month-end close</span></div>
+                    <div><b>50%</b><span>Less manual reconciliation</span></div>
+                </div>
+
                 <a class="read rv" href="https://www.figma.com/design/P9x239LrSXuc8xHnMU7l7H/JERP-Web--FICO-?node-id=1-11&t=c4F0wu08O0KyYAXh-1" target="_blank" rel="noopener noreferrer"><span>View the JERP FICO designs in Figma</span><span class="ar"><span>↗</span></span></a>
             </section>
 

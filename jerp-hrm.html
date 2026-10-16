@@ -7,12 +7,8 @@
         <title>JERP HRM — Case Study</title>
         <script>
             (function(){
-                var mode='system';
-                try{mode=localStorage.getItem('portfolio-theme')||mode;}catch(error){}
-                if(['system','light','dark'].indexOf(mode)===-1) mode='system';
-                var dark=mode==='dark'||(mode==='system'&&matchMedia('(prefers-color-scheme: dark)').matches);
-                document.documentElement.dataset.themeMode=mode;
-                document.documentElement.dataset.theme=dark?'dark':'light';
+                document.documentElement.dataset.theme='light';
+                try{localStorage.removeItem('portfolio-theme');}catch(error){}
             })();
         </script>
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -34,14 +30,6 @@
             </nav>
             <div class="tools">
                 <a class="btn cv" href="files/ARIF%20-%20UIUX%20Designer.pdf" target="_blank" rel="noopener" aria-label="Open CV in a new tab: ARIF - UIUX Designer"><span class="ic"><picture><source media="(max-width:900px)" srcset="images/figma/2354f9d8-5278-4d03-8364-8a2ddc9ea9be.svg"><img alt="" src="images/figma/2106d6c3-8b2b-41fc-a728-a4de58cad21e.svg"></picture></span><span class="label"><span class="d">Get CV</span><span class="m">CV</span></span></a>
-                <button class="btn theme-toggle" type="button" data-theme-mode="system" aria-label="Theme: System default" title="Theme: System default">
-                    <span class="ic" aria-hidden="true">
-                        <svg class="theme-icon icon-system" viewBox="0 0 16 16" fill="none"><rect x="2" y="2.5" width="12" height="8.5" rx="1" stroke="currentColor" stroke-width="1.4"/><path d="M6 14h4M8 11v3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
-                        <svg class="theme-icon icon-light" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="3" stroke="currentColor" stroke-width="1.4"/><path d="M8 1.5v1.3m0 10.4v1.3m6.5-6.5h-1.3M2.8 8H1.5m11.1-4.6-.9.9m-7.4 7.4-.9.9m9.2 0-.9-.9M4.3 4.3l-.9-.9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
-                        <svg class="theme-icon icon-dark" viewBox="0 0 16 16" fill="none"><path d="M13.3 10.2A6 6 0 0 1 5.8 2.7 6 6 0 1 0 13.3 10.2Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
-                    </span>
-                    <span class="label"><span class="d">SYSTEM</span><span class="m">SYS</span></span>
-                </button>
             </div>
         </header>
 
@@ -128,18 +116,24 @@
             </section>
 
             <section class="jerp-gallery">
-                <figure class="jerp-gallery-feature rv">
-                    <a href="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&amp;fit=crop&amp;w=2400&amp;q=85" target="_blank" rel="noopener noreferrer" aria-label="Open the Unsplash office demo image in a new tab">
-                        <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&amp;fit=crop&amp;w=2400&amp;q=85" alt="Bright collaborative office with shared desks, plants, and meeting space" loading="lazy" decoding="async">
-                        <span class="jerp-shot-demo">Unsplash demo</span>
-                    </a>
-                    <figcaption>Work, connected — a visual introduction to the JERP HRM workspace.</figcaption>
-                </figure>
                 <div class="jerp-gallery-head rv">
                     <div class="sl"><i>06</i><span class="label">Desktop UI Gallery</span></div>
                     <h2 class="fr">A closer look at the HRM workspace.</h2>
                     <p class="mono">A spacious preview gallery for the JERP HRM screens. These temporary demo images are hosted by Unsplash, not product screenshots; replace each image with an exported screen when ready.</p>
                 </div>
+
+                <figure class="jerp-gallery-feature jerp-full rv">
+                    <a href="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&amp;fit=crop&amp;w=2400&amp;q=85" target="_blank" rel="noopener noreferrer" aria-label="Open the Unsplash office demo image in a new tab">
+                        <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&amp;fit=crop&amp;w=2400&amp;q=85" alt="Bright collaborative office with shared desks, plants, and meeting space" loading="lazy" decoding="async">
+                        <span class="jerp-shot-demo">Unsplash demo</span>
+                    </a>
+                    <figcaption>
+                        <span>  <b>00 / Workforce overview</b> Work, connected — a visual introduction to the JERP HRM workspace.
+                        </span> 
+                        <span align="right">Dashboard</span>
+                    </figcaption>
+                </figure>
+
                 <div class="jerp-gallery-grid">
                     <figure class="jerp-shot jerp-shot--featured rv">
                         <a class="jerp-shot-media" href="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&amp;fit=crop&amp;w=2200&amp;q=85" target="_blank" rel="noopener noreferrer" aria-label="Open the workforce overview demo image in a new tab">

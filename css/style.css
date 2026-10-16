@@ -31,31 +31,8 @@
   --ease: cubic-bezier(.22, .8, .2, 1);
 }
 
-html[data-theme="dark"] {
-  color-scheme: dark;
-  --bg: #111511;
-  --hero: #191f1a;
-  --ink: #f1f0e8;
-  --mute: #a9afa5;
-  --line: #343c35;
-  --contrast-bg: #252c26;
-  --contrast-fg: #f1f0e8;
-  --contrast-muted: #c0c7bc;
-  --contact-bg: #080a08;
-  --surface: #202720;
-  --surface-alt: #000;
-  --interests-bg: var(--bg);
-  --control: #222a23;
-  --control-hover: #303a31;
-  --review-accent: #67d994;
-}
-
-html[data-theme="dark"] .exp {
-  background: var(--contrast-bg)
-}
-
-html[data-theme="light"] {
-  color-scheme: light
+html {
+  color-scheme: light;
 }
 
 * {
@@ -418,23 +395,6 @@ html[data-preloader="skip"] .preloader {
   height: 12px
 }
 
-.theme-toggle {
-  font: inherit;
-  color: var(--ink)
-}
-
-.theme-icon {
-  display: none;
-  width: 15px;
-  height: 15px
-}
-
-.theme-toggle[data-theme-mode="system"] .icon-system,
-.theme-toggle[data-theme-mode="light"] .icon-light,
-.theme-toggle[data-theme-mode="dark"] .icon-dark {
-  display: block
-}
-
 .btn:hover {
   transform: translateY(-2px);
   border-color: var(--green)
@@ -442,10 +402,6 @@ html[data-preloader="skip"] .preloader {
 
 .btn.cv:hover {
   background: #fff
-}
-
-.btn.theme-toggle:hover {
-  background: var(--control-hover)
 }
 
 .btn.cv:hover .ic img {
@@ -891,7 +847,7 @@ html[data-preloader="skip"] .preloader {
 
 .impact b {
   font-weight: 400;
-  font-size: 18px;
+  font-size: 20px;
   line-height: 28px;
   letter-spacing: -.18px;
   transition: color .3s
@@ -2032,7 +1988,9 @@ html[data-preloader="skip"] .preloader {
   font-size: 10px;
   line-height: 1.6;
   letter-spacing: .04em;
-  text-transform: uppercase
+  display: flex;
+  justify-content: space-between;
+  align-items: center
 }
 
 .jerp-gallery-head {
@@ -2114,10 +2072,11 @@ html[data-preloader="skip"] .preloader {
   flex-direction: column;
   gap: 5px
 }
-
+.jerp-full figcaption b,
 .jerp-shot figcaption b {
   font-size: 15px;
-  font-weight: 500
+  font-weight: 500;
+  color: var(--ink);
 }
 
 .jerp-shot figcaption small,
@@ -3363,7 +3322,7 @@ body.menu-open {
     gap: 6px;
     padding: 10px 2px
   }
-
+  .jerp-full figcaption b,
   .jerp-shot figcaption b {
     font-size: 12px
   }
