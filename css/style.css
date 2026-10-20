@@ -7,20 +7,20 @@
 }
 
 :root {
-  --bg: #f3eedb;
-  --hero: #f7f1e3;
+  --bg: #fcfbf8;
+  --hero: #ffffff;
   --ink: #0d0d0d;
   --mute: #6b6656;
-  --line: #d8d1b8;
+  --line: #e8e4d5;
   --contrast-bg: #0d0d0d;
-  --contrast-fg: #f3eedb;
+  --contrast-fg: #fcfbf8;
   --contrast-muted: #d8d1b8;
   --contact-bg: #0d0d0d;
-  --hero-fg: #f3eedb;
+  --hero-fg: #fcfbf8;
   --hero-highlight-fg: var(--contrast-fg);
-  --surface: #f4efdd;
+  --surface: #f7f5ee;
   --surface-alt: #fff;
-  --interests-bg: #fffaf2;
+  --interests-bg: #ffffff;
   --control: #f5f5f5;
   --control-hover: #fff;
   --green: #17b85a;
@@ -110,7 +110,7 @@ h4,
   place-items: center;
   overflow: hidden;
   background: #0d0d0d;
-  color: #f3eedb;
+  color: #fcfbf8;
   opacity: 1;
   visibility: visible;
   transition: opacity .7s var(--ease), visibility .7s
@@ -194,7 +194,7 @@ html[data-preloader="skip"] .preloader {
 .preloader-progress span:first-child {
   min-width: 3ch;
   text-align: right;
-  color: #f3eedb
+  color: #fcfbf8
 }
 
 .preloader-progress span:last-child {
@@ -1513,8 +1513,8 @@ html[data-preloader="skip"] .preloader {
   align-items: center;
   justify-content: space-between;
   padding: 24px 0;
-  border-top: 1px solid rgba(243, 238, 219, .2);
-  border-bottom: 1px solid rgba(243, 238, 219, .2)
+  border-top: 1px solid rgba(252, 251, 248, .2);
+  border-bottom: 1px solid rgba(252, 251, 248, .2)
 }
 
 .mail {
@@ -2171,7 +2171,7 @@ html[data-preloader="skip"] .preloader {
 
 .cs-res.cs-impact {
   background: #000;
-  color: #f3eedb
+  color: #fcfbf8
 }
 
 .cs-impact .cs-body,
@@ -2184,7 +2184,7 @@ html[data-preloader="skip"] .preloader {
 }
 
 .cs-impact .mrow b {
-  color: #f3eedb
+  color: #fcfbf8
 }
 
 .cs-res h2 {
@@ -2262,7 +2262,7 @@ html[data-preloader="skip"] .preloader {
   font-size: 44px;
   line-height: 62px;
   letter-spacing: -.5px;
-  color: #f3eedb;
+  color: #fcfbf8;
   text-align: center;
   width: 1000px;
   max-width: 100%
@@ -2501,7 +2501,7 @@ body.menu-open {
     gap: 8px;
     width: 100%;
     z-index: 1;
-    color: #f3eedb
+    color: #fcfbf8
   }
 
   .h1 p {
@@ -2974,8 +2974,8 @@ body.menu-open {
 
   .mail {
     padding: 16px 0;
-    border-top: 1px solid rgba(243, 238, 219, .2);
-    border-bottom: 1px solid rgba(243, 238, 219, .2)
+    border-top: 1px solid rgba(252, 251, 248, .2);
+    border-bottom: 1px solid rgba(252, 251, 248, .2)
   }
 
   .mail span,
@@ -3515,7 +3515,7 @@ body.menu-open {
   }
 
   .mbrand {
-    color: #f3eedb;
+    color: #fcfbf8;
     font-weight: 600;
     font-size: 20px
   }
@@ -3544,7 +3544,7 @@ body.menu-open {
     width: 24px;
     height: 2px;
     border-radius: 1px;
-    background: #f3eedb
+    background: #fcfbf8
   }
 
   .close::before {
@@ -3618,7 +3618,7 @@ body.menu-open {
 
   .ml:hover b,
   .ml.on b {
-    color: #f3eedb
+    color: #fcfbf8
   }
 
   .ml:hover b {
@@ -3645,7 +3645,7 @@ body.menu-open {
 
   .ml small.bg {
     background: var(--c);
-    color: #f3eedb;
+    color: #fcfbf8;
     font-weight: 700;
     font-size: 11px;
     padding: 2px 10px;
@@ -3674,7 +3674,7 @@ body.menu-open {
     flex-wrap: wrap;
     align-items: center;
     gap: 12px;
-    color: #f3eedb;
+    color: #fcfbf8;
     font-weight: 300;
     font-size: 32px
   }
@@ -3690,16 +3690,16 @@ body.menu-open {
   .memail {
     display: block;
     padding: 16px 0;
-    border-top: 1px solid rgba(243, 238, 219, .2);
-    border-bottom: 1px solid rgba(243, 238, 219, .2);
-    color: #f3eedb;
+    border-top: 1px solid rgba(252, 251, 248, .2);
+    border-bottom: 1px solid rgba(252, 251, 248, .2);
+    color: #fcfbf8;
     font-size: 20px
   }
 
   .msoc {
     display: flex;
     justify-content: space-between;
-    color: #f3eedb;
+    color: #fcfbf8;
     font-family: 'JetBrains Mono', monospace;
     font-size: 13px
   }
@@ -3714,7 +3714,7 @@ body.menu-open {
     width: 134px;
     height: 5px;
     border-radius: 2.5px;
-    background: #f3eedb;
+    background: #fcfbf8;
     opacity: .4
   }
 

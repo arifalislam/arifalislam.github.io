@@ -66,12 +66,26 @@
                 <div class="rv">
                     <div class="sl"><i>02</i><span class="label">The Challenge</span></div>
                     <span class="hl" style="--c:var(--purple)">One product, many HR workflows</span>
-                    <p class="mono">HR teams move between organizational records, employee permissions, schedules, leave requests, and sensitive pay information. Each area has its own data and decisions, yet users need to move between them without losing context. The design challenge was to give these different tasks a clear structure while maintaining a consistent experience across the wider ERP.</p>
+                    <p class="mono">HR teams routinely switch between organisational records, employee permissions, work schedules, leave requests, and sensitive pay data. Each domain carries its own logic and decisions, yet people need to move between them without losing context or repeating effort. Key design challenges included:</p>
+                    <ul class="mono" style="padding-left:1.25em;display:flex;flex-direction:column;gap:10px;color:var(--mute);font-size:16px;line-height:28px">
+                        <li>Unifying structurally different modules — org charts, access controls, timesheets, payroll — into a single, coherent product language.</li>
+                        <li>Preventing context loss when an administrator navigates from an employee profile to a leave request or payroll run without retracing steps.</li>
+                        <li>Handling sensitive financial and personal data (salary, loans, provident fund) clearly without exposing information to the wrong roles.</li>
+                        <li>Scaling information density: some views need rich tabular data; others need quick status at a glance — both had to feel native to JERP.</li>
+                        <li>Keeping the HRM experience visually consistent with the wider ERP while giving each functional area its own recognisable identity.</li>
+                    </ul>
                 </div>
                 <div class="rv" style="--d:.1s">
                     <div class="sl"><i>03</i><span class="label">The Approach</span></div>
-                    <span class="hl" style="--c:var(--orange)">Organize around the work</span>
-                    <p class="mono">I shaped the experience around three connected questions: who works here and what can they access; when and where are they working; and how are their pay and employee services managed? This structure ties the module set to real operational goals and gives each area a distinct, easy-to-understand place in the product.</p>
+                    <span class="hl" style="--c:var(--orange)">Organise around the work</span>
+                    <p class="mono">Rather than grouping screens by feature type, I shaped the experience around three operational questions: <em>Who works here and what can they access? When and where are they working? How are their pay and employee services managed?</em> This framing drove concrete design decisions:</p>
+                    <ul class="mono" style="padding-left:1.25em;display:flex;flex-direction:column;gap:10px;color:var(--mute);font-size:16px;line-height:28px">
+                        <li>Grouped modules into three clusters — People &amp; Access, Time &amp; Attendance, Pay &amp; Services — so each area has a clear, bounded purpose.</li>
+                        <li>Established a shared layout grid and navigation pattern across all modules so switching areas feels familiar, not disorienting.</li>
+                        <li>Designed role-aware screens: permission-sensitive sections like payroll and loan details adapt their visibility based on the user's access level.</li>
+                        <li>Used progressive disclosure on complex forms (shift creation, salary runs) to surface only what is needed at each step, reducing cognitive load.</li>
+                        <li>Applied a consistent status-indicator system across leave, shift, and payroll states so teams can read the product's current situation at a glance.</li>
+                    </ul>
                 </div>
             </section>
 
@@ -166,7 +180,7 @@
                 </div>
             </section>
 
-            <section class="cs-res cs-outcome">
+            <section class="cs-res cs-outcome" style="background:none">
                 <div class="hd rv" style="display:flex;flex-direction:column;gap:16px">
                     <div class="sl"><i>07</i><span class="label">The Outcome & Impact</span></div>
                     <h2>A coherent design for a broad HRM scope.</h2>

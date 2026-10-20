@@ -111,7 +111,7 @@
   var heroStage=document.querySelector('.stage');
   var heroWord=document.querySelector('.xbox span');
   if(heroWord&&!reduceMotion){
-    var heroWords=['Experiences','Thinking','Strategy', 'Solutions'];
+    var heroWords=['Process','Design','Strategy', 'Solutions'];
     var heroWordIndex=0;
     setInterval(function(){
       heroWord.classList.add('is-changing');
