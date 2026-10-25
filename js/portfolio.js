@@ -30,8 +30,8 @@
     },{once:true});
   }
   function setupInterestVideoSound(){
-    var video=document.querySelector('.interest-photo--portrait video');
-    var button=document.querySelector('.interest-video-sound');
+    var video=document.querySelector('.gallery-video-wrap video, .interest-photo--portrait video');
+    var button=document.querySelector('.gallery-video-sound, .interest-video-sound');
     if(!video||!button) return;
     video.volume=.45;
     button.addEventListener('click',function(){
@@ -100,7 +100,7 @@
 
   /* Active nav link */
   var navLinks=[].slice.call(document.querySelectorAll('.links a'));
-  var secs=['work','about','experience','interests','contact'].map(function(id){return document.getElementById(id)});
+  var secs=['work','about','experience','process','gallery','interests','contact'].map(function(id){return document.getElementById(id)}).filter(Boolean);
   function setActive(){
     var y=scrollY+innerHeight*.35, cur=null;
     secs.forEach(function(s){ if(s.offsetTop<=y) cur=s.id; });
